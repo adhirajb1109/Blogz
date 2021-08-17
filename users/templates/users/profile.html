@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %} {% block content %} {% load crispy_forms_tags %}
+<h2 class="mb-3">Profile</h2>
+<div class="card" style="width: 18rem">
+  <div class="card-body">
+    <img
+      src="{{user.profile.image.url}}"
+      class="rounded-circle"
+      alt="Profile Picture"
+    />
+    <h5 class="card-title d-inline mx-2">{{user.username}}</h5>
+    <p class="card-text mt-3">{{user.email}}</p>
+  </div>
+</div>
+<div class="card my-5 p-4">
+  <h2 class="mb-3">Update Profile</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset class="form-group">{{u_form|crispy}}{{p_form|crispy}}</fieldset>
+    <div class="form-group mb-4">
+      <button type="submit" class="btn btn-outline-dark">
+        Save<i class="far fa-save ms-2"></i>
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock content %}

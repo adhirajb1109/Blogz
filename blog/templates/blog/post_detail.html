@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %} {% block content %}
+<h1 class="mb-3">{{object.title}}</h1>
+<h5 class="my-4">
+  Written By {{object.author}} on {{object.date_posted|date:"F d, Y"}}
+</h5>
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-text lh-lg">{{post.content}}</h5>
+  </div>
+</div>
+{% if object.author == user %}
+<a href="{% url 'post-update' object.pk %}" class="btn btn-outline-info me-3"
+  >Update<i class="fas fa-edit ms-2"></i
+></a>
+<a href="{% url 'post-delete' object.pk %}" class="btn btn-outline-danger"
+  >Delete<i class="far fa-trash-alt ms-2"></i
+></a>
+{% endif %} {% endblock content %}
