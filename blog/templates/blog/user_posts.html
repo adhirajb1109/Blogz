@@ -1,4 +1,6 @@
-{% extends "blog/base.html" %} {% block content %} {% for post in posts %}
+{% extends "blog/base.html" %} {% block content %}
+<h2 class="my-4">Posts</h2>
+{% for post in posts %}
 <div class="card mb-3">
   <div class="card-body">
     <img
